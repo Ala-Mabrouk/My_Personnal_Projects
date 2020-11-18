@@ -1,0 +1,218 @@
+<html>
+<head>
+<title>InfoActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #1750eb;}
+.s3 { color: #8c8c8c; font-style: italic;}
+.s4 { color: #067d17;}
+.s5 { color: #0037a6;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+InfoActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.quizapplication;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity;</span>
+
+<span class="s0">import </span><span class="s1">android.app.AlertDialog;</span>
+<span class="s0">import </span><span class="s1">android.content.Intent;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle;</span>
+<span class="s0">import </span><span class="s1">android.os.CountDownTimer;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater;</span>
+<span class="s0">import </span><span class="s1">android.view.View;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView;</span>
+
+<span class="s0">import </span><span class="s1">org.w3c.dom.Text;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Random;</span>
+<span class="s0">import </span><span class="s1">java.util.Timer;</span>
+<span class="s0">import </span><span class="s1">java.util.TimerTask;</span>
+
+<span class="s0">public class </span><span class="s1">InfoActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+<span class="s1">TextView question,rq,timertxt;</span>
+<span class="s1">Button bt1,bt2,bt3,bt4;</span>
+<span class="s0">private </span><span class="s1">Questions myqustion[];</span>
+<span class="s0">private int </span><span class="s1">score,r=</span><span class="s2">0</span><span class="s1">;</span>
+<span class="s0">private </span><span class="s1">CountDownTimer time;</span>
+<span class="s0">private </span><span class="s1">String yesans,gametype;</span>
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState);</span>
+        <span class="s1">setContentView(R.layout.activity_main3);</span>
+
+        <span class="s3">//getting the game gategorie from MainActivity2</span>
+        <span class="s1">Intent intent=getIntent();</span>
+        <span class="s1">gametype=intent.getStringExtra(</span><span class="s4">&quot;categorie&quot;</span><span class="s1">);</span>
+
+        <span class="s0">switch</span><span class="s1">(gametype){</span>
+            <span class="s0">case </span><span class="s4">&quot;info&quot;</span><span class="s1">: myqustion=</span><span class="s0">new </span><span class="s1">TabQuestions().getQestioninfo();</span><span class="s0">break</span><span class="s1">;</span>
+            <span class="s0">case </span><span class="s4">&quot;culture&quot;</span><span class="s1">: myqustion=</span><span class="s0">new </span><span class="s1">TabQuestions().getQestionculture();</span><span class="s0">break</span><span class="s1">;</span>
+            <span class="s0">case </span><span class="s4">&quot;sport&quot;</span><span class="s1">: myqustion=</span><span class="s0">new </span><span class="s1">TabQuestions().getQestionsport();</span><span class="s0">break</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s3">//preparing  components</span>
+        <span class="s1">question=(TextView) findViewById(R.id.qestion);</span>
+        <span class="s1">bt1=(Button)findViewById((R.id.ans1));</span>
+        <span class="s1">bt2=(Button)findViewById((R.id.ans2));</span>
+        <span class="s1">bt3=(Button)findViewById((R.id.ans3));</span>
+        <span class="s1">bt4=(Button)findViewById((R.id.ans4));</span>
+        <span class="s1">rq=(TextView) findViewById(R.id.rqtext) ;</span>
+        <span class="s1">timertxt=(TextView)findViewById(R.id.timer) ;</span>
+
+        <span class="s3">//initialize the timer</span>
+       <span class="s1">time=</span><span class="s0">new </span><span class="s1">CountDownTimer(</span><span class="s2">10000</span><span class="s1">, </span><span class="s2">1000</span><span class="s1">) {</span>
+
+            <span class="s0">public void </span><span class="s1">onTick(</span><span class="s0">long </span><span class="s1">millisUntilFinished) {</span>
+                <span class="s1">timertxt.setText(</span><span class="s4">&quot;&quot; </span><span class="s1">+ millisUntilFinished / </span><span class="s2">1000</span><span class="s1">);</span>
+                <span class="s3">//here you can have your logic to set text to edittext</span>
+            <span class="s1">}</span>
+
+            <span class="s0">public void </span><span class="s1">onFinish() {</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;Time Out ☻ &quot;</span><span class="s1">);</span>
+                <span class="s1">r++;</span>
+                <span class="s1">showquestions(r);</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">};</span>
+
+
+
+    <span class="s3">//Starting the game by shwoing the first quistion</span>
+    <span class="s1">showquestions(r);</span>
+    <span class="s1">r++;</span>
+
+
+    <span class="s3">//getting the user response and reacting to it</span>
+    <span class="s1">bt1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s0">if </span><span class="s1">(bt1.getText() == yesans) {</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;nice ♥&quot;</span><span class="s1">);</span>
+                <span class="s1">score+=</span><span class="s2">10</span><span class="s1">;</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;wrong ☻ </span><span class="s5">\n </span><span class="s4">the correct answer is: &quot; </span><span class="s1">+ yesans);</span>
+                <span class="s1">showquestions(r++);</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+    <span class="s1">});</span>
+    <span class="s1">bt2.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s0">if </span><span class="s1">(bt2.getText() == yesans) {</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;nice ♥&quot;</span><span class="s1">);</span>
+                <span class="s1">score+=</span><span class="s2">10</span><span class="s1">;</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">rq.setText(</span><span class="s4">&quot;wrong ☻ </span><span class="s5">\n </span><span class="s4">the correct answer is: &quot; </span><span class="s1">+ yesans);</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+    <span class="s1">});</span>
+    <span class="s1">bt3.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s0">if </span><span class="s1">(bt3.getText() == yesans) {</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;nice ♥&quot;</span><span class="s1">);</span>
+                <span class="s1">score+=</span><span class="s2">10</span><span class="s1">;</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+
+                <span class="s1">rq.setText(</span><span class="s4">&quot;wrong ☻ </span><span class="s5">\n </span><span class="s4">the correct answer is: &quot; </span><span class="s1">+ yesans);</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+    <span class="s1">});</span>
+    <span class="s1">bt4.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s0">if </span><span class="s1">(bt4.getText() == yesans) {</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;nice ♥&quot;</span><span class="s1">);</span>
+                <span class="s1">score+=</span><span class="s2">10</span><span class="s1">;</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">rq.setText(</span><span class="s4">&quot;wrong ☻ </span><span class="s5">\n </span><span class="s4">the correct answer is: &quot; </span><span class="s1">+ yesans);</span>
+                <span class="s1">showquestions(r++);</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+    <span class="s1">});</span>
+
+<span class="s1">}</span>
+
+
+
+    <span class="s0">public void </span><span class="s1">showquestions(</span><span class="s0">int </span><span class="s1">a){</span>
+        <span class="s0">if</span><span class="s1">(r==myqustion.length){</span>
+            <span class="s1">freezGame();</span>
+        <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+            <span class="s3">//this line of code  is to make a simple delay by 1s so the user can see the remarques</span>
+            <span class="s0">new </span><span class="s1">Timer().schedule(</span><span class="s0">new </span><span class="s1">TimerTask(){</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public void </span><span class="s1">run(){</span>
+                    <span class="s1">rq.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+
+            <span class="s1">},</span><span class="s2">1000</span><span class="s1">);</span>
+
+            <span class="s1">time.cancel();</span>
+            <span class="s1">time.start();</span>
+        <span class="s1">question.setText(myqustion[a].question);</span>
+        <span class="s1">bt1.setText(myqustion[a].ch1);</span>
+        <span class="s1">bt2.setText(myqustion[a].ch2);</span>
+        <span class="s1">bt3.setText(myqustion[a].ch3);</span>
+        <span class="s1">bt4.setText(myqustion[a].ch4);</span>
+        <span class="s1">yesans=myqustion[a].rep;</span>
+            <span class="s0">new </span><span class="s1">Timer().schedule(</span><span class="s0">new </span><span class="s1">TimerTask(){</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public void </span><span class="s1">run(){</span>
+                    <span class="s1">rq.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+
+            <span class="s1">},</span><span class="s2">1000</span><span class="s1">);</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s3">//when the questions are over the game ends and show the Enddilog with the score</span>
+    <span class="s0">public void </span><span class="s1">outgame(){</span>
+        <span class="s1">time.cancel();</span>
+           <span class="s1">Bundle b=</span><span class="s0">new </span><span class="s1">Bundle();</span>
+        <span class="s1">b.putString(</span><span class="s4">&quot;score&quot;</span><span class="s1">,</span><span class="s4">&quot;&quot;</span><span class="s1">+score);</span>
+        <span class="s1">Enddilog d=</span><span class="s0">new </span><span class="s1">Enddilog();</span>
+        <span class="s1">d.setArguments(b);</span>
+        <span class="s1">d.show(getFragmentManager(),</span><span class="s4">&quot;mydilog&quot;</span><span class="s1">);</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">private void </span><span class="s1">freezGame(){</span>
+        <span class="s1">Timer timer=</span><span class="s0">new </span><span class="s1">Timer();</span>
+        <span class="s1">timer.schedule(</span><span class="s0">new </span><span class="s1">TimerTask(){</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">run(){</span>
+                <span class="s1">outgame();</span>
+            <span class="s1">}</span>
+
+        <span class="s1">},</span><span class="s2">1300</span><span class="s1">);</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span></pre>
+</body>
+</html>

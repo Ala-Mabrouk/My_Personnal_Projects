@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.quizapplication;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Timer;</span>
+<span class="s0">import </span><span class="s1">java.util.TimerTask;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+<span class="s1">Timer timer;</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState);</span>
+        <span class="s1">setContentView(R.layout.activity_main);</span>
+
+        <span class="s1">timer=</span><span class="s0">new </span><span class="s1">Timer();</span>
+        <span class="s1">timer.schedule(</span><span class="s0">new </span><span class="s1">TimerTask(){</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">run(){</span>
+                <span class="s1">Intent intent=</span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this</span><span class="s1">, MainActivity2.</span><span class="s0">class</span><span class="s1">);</span>
+                <span class="s1">startActivity(intent);</span>
+                <span class="s1">finish();</span>
+            <span class="s1">}</span>
+
+        <span class="s1">},</span><span class="s2">3000</span><span class="s1">);</span>
+<span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

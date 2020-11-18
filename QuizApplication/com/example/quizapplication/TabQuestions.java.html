@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>TabQuestions.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #067d17;}
+.s3 { color: #0037a6;}
+.s4 { color: #8c8c8c; font-style: italic;}
+.s5 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TabQuestions.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.quizapplication;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Random;</span>
+
+<span class="s0">public class </span><span class="s1">TabQuestions {</span>
+
+   <span class="s0">public  </span><span class="s1">Questions infoQ[]={</span>
+
+           <span class="s0">new </span><span class="s1">Questions( </span><span class="s2">&quot;Which of the following circuits is used as “Memory devices” on computers?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;Flip Flop&quot;</span><span class="s1">,</span><span class="s2">&quot;Comparator&quot;</span><span class="s1">,</span><span class="s2">&quot;Attenuator&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;Flip Flop&quot;</span><span class="s1">)</span>
+        <span class="s1">,</span>
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;HTTP is a protocol located in the ________?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;Application layer&quot;</span><span class="s1">,</span><span class="s2">&quot;Transport layer&quot;</span><span class="s1">,</span><span class="s2">&quot;Network layer&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;Application layer&quot;</span><span class="s1">),</span>
+
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot; DHCP is used in______?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;IPv6&quot;</span><span class="s1">,</span><span class="s2">&quot;IPv4&quot;</span><span class="s1">,</span><span class="s2">&quot;IPv6 et IPv4&quot;</span><span class="s1">,</span><span class="s2">&quot;none of them&quot;</span><span class="s1">,</span><span class="s2">&quot;IPv6 et IPv4&quot;</span><span class="s1">),</span>
+
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;When two strings are exactly equivalent, strcmp () returns what?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;Returns a string&quot;</span><span class="s1">,</span><span class="s2">&quot;returns 0&quot;</span><span class="s1">,</span><span class="s2">&quot;returns 1&quot;</span><span class="s1">,</span><span class="s2">&quot;returns nothing&quot;</span><span class="s1">,</span><span class="s2">&quot;returns 0&quot;</span><span class="s1">),</span>
+
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;Which of these operators is used to allocate memory for an object?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;malloc&quot;</span><span class="s1">,</span><span class="s2">&quot;alloc&quot;</span><span class="s1">,</span><span class="s2">&quot;new&quot;</span><span class="s1">,</span><span class="s2">&quot;realloc&quot;</span><span class="s1">,</span><span class="s2">&quot;new&quot;</span><span class="s1">),</span>
+
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;Which of the following maintains a list of database drivers in JDBC?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;DriverManager&quot;</span><span class="s1">,</span><span class="s2">&quot;JDBC driver&quot;</span><span class="s1">,</span><span class="s2">&quot;Connection&quot;</span><span class="s1">,</span><span class="s2">&quot;Statement&quot;</span><span class="s1">,</span><span class="s2">&quot;DriverManager&quot;</span><span class="s1">),</span>
+
+           <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;What signal is sent by the command </span><span class="s3">\&quot;</span><span class="s2">kill -9</span><span class="s3">\&quot;</span><span class="s2">?&quot;</span><span class="s1">,</span>
+                   <span class="s2">&quot;TERM&quot;</span><span class="s1">,</span><span class="s2">&quot;STOP&quot;</span><span class="s1">,</span><span class="s2">&quot;KILL&quot;</span><span class="s1">,</span><span class="s2">&quot;INT&quot;</span><span class="s1">,</span><span class="s2">&quot;KILL&quot;</span><span class="s1">),</span>
+
+    <span class="s1">};</span>
+    <span class="s0">public  </span><span class="s1">Questions cultureQ[]={</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;who is the headmaster of ISIMA&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;Mr Fniech&quot;</span><span class="s1">,</span><span class="s2">&quot;Mr Hssari&quot;</span><span class="s1">,</span><span class="s2">&quot;Mrs Zarboot&quot;</span><span class="s1">,</span><span class="s2">&quot;no one&quot;</span><span class="s1">,</span><span class="s2">&quot;Mr Fniech&quot;</span><span class="s1">),</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;which is the n°1 serie in IMDB &quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;Breaking Bad&quot;</span><span class="s1">,</span><span class="s2">&quot;Planet Earth II&quot;</span><span class="s1">,</span><span class="s2">&quot;Band of Brothers &quot;</span><span class="s1">,</span><span class="s2">&quot; Game Of Thrones&quot;</span><span class="s1">,</span><span class="s2">&quot;Planet Earth II&quot;</span><span class="s1">),</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;what is python 2 ?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;a snake &quot;</span><span class="s1">,</span><span class="s2">&quot;programing language&quot;</span><span class="s1">,</span><span class="s2">&quot;nik name&quot;</span><span class="s1">,</span><span class="s2">&quot;it depends&quot;</span><span class="s1">,</span><span class="s2">&quot;it depends&quot;</span><span class="s1">),</span>
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;who is warrior107 ?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;nobody&quot;</span><span class="s1">,</span><span class="s2">&quot;a vedio gamer&quot;</span><span class="s1">,</span><span class="s2">&quot;a develloper&quot;</span><span class="s1">,</span><span class="s2">&quot;smthg else&quot;</span><span class="s1">,</span><span class="s2">&quot;smthg else&quot;</span><span class="s1">)</span>
+    <span class="s1">};</span>
+
+    <span class="s0">public  </span><span class="s1">Questions sportQ[]={</span>
+
+            <span class="s0">new </span><span class="s1">Questions( </span><span class="s2">&quot;In bowling, what is the perfect score (for twelve consecutive strikes)?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;350 points&quot;</span><span class="s1">,</span><span class="s2">&quot;300 points&quot;</span><span class="s1">,</span><span class="s2">&quot;400 points&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;300 points&quot;</span><span class="s1">)</span>
+            <span class="s1">,</span>
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;The Olympic Games (summer or winter) are organized evrey ?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;Every five years&quot;</span><span class="s1">,</span><span class="s2">&quot;Every four years&quot;</span><span class="s1">,</span><span class="s2">&quot;Evrey year&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;Every four years&quot;</span><span class="s1">),</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;The FIFA World Cup takes place evrey ?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;Every four years&quot;</span><span class="s1">,</span><span class="s2">&quot;Every year&quot;</span><span class="s1">,</span><span class="s2">&quot;Every five years&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;Every four years&quot;</span><span class="s1">),</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;Before a sumo bout, what do wrestlers throw in the bout area?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;Sand&quot;</span><span class="s1">,</span><span class="s2">&quot;water&quot;</span><span class="s1">,</span><span class="s2">&quot;Salt&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;Salt&quot;</span><span class="s1">),</span>
+
+            <span class="s0">new </span><span class="s1">Questions(</span><span class="s2">&quot;What is the distance of the marathon ?&quot;</span><span class="s1">,</span>
+                    <span class="s2">&quot;42,195 km&quot;</span><span class="s1">,</span><span class="s2">&quot;50 km&quot;</span><span class="s1">,</span><span class="s2">&quot;30,1 km&quot;</span><span class="s1">,</span><span class="s2">&quot;boo&quot;</span><span class="s1">,</span><span class="s2">&quot;42,195 km&quot;</span><span class="s1">)</span>
+    <span class="s1">};</span>
+
+   <span class="s0">public </span><span class="s1">Questions[] getQestioninfo( ){</span>
+       <span class="s1">shufulle(infoQ);</span>
+       <span class="s0">return </span><span class="s1">infoQ ;</span>
+   <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">Questions[] getQestionculture( ){</span>
+        <span class="s1">shufulle(cultureQ);</span>
+        <span class="s0">return </span><span class="s1">cultureQ ;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">Questions[] getQestionsport( ){</span>
+        <span class="s1">shufulle(sportQ);</span>
+        <span class="s0">return </span><span class="s1">sportQ ;</span>
+    <span class="s1">}</span>
+
+    <span class="s4">//this methode to shufulle questions so they dont come in the same order evrey time</span>
+    <span class="s0">private void </span><span class="s1">shufulle(Questions tab[]){</span>
+       <span class="s1">Questions aux;</span>
+       <span class="s1">Random j=</span><span class="s0">new </span><span class="s1">Random();</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt;tab.length ; i++) {</span>
+            <span class="s0">int </span><span class="s1">var=j.nextInt(tab.length);</span>
+            <span class="s1">aux=tab[var];</span>
+            <span class="s1">tab[var]=tab[i];</span>
+            <span class="s1">tab[i]=aux;</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

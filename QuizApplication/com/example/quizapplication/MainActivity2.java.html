@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>MainActivity2.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #067d17;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity2.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.quizapplication;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity;</span>
+<span class="s0">import </span><span class="s1">androidx.constraintlayout.widget.ConstraintSet;</span>
+
+<span class="s0">import </span><span class="s1">android.app.AlertDialog;</span>
+<span class="s0">import </span><span class="s1">android.content.Intent;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater;</span>
+<span class="s0">import </span><span class="s1">android.view.View;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity2 </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+<span class="s2">//private Button buttoninfo,buttonculture,buttonsport,testbt;</span>
+    <span class="s0">private </span><span class="s1">ImageView infoimg,sportimg,cultureimg;</span>
+<span class="s0">private </span><span class="s1">TextView txt;</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState);</span>
+        <span class="s1">setContentView(R.layout.activity_main2);</span>
+
+        <span class="s1">infoimg=(ImageView) findViewById(R.id.infoimg) ;</span>
+        <span class="s1">sportimg=(ImageView) findViewById(R.id.sportimg) ;</span>
+        <span class="s1">cultureimg=(ImageView) findViewById(R.id.cultureimg) ;</span>
+
+
+
+        <span class="s1">infoimg.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">opennext(</span><span class="s3">&quot;info&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">});</span>
+
+
+        <span class="s1">cultureimg.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">opennext(</span><span class="s3">&quot;culture&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">});</span>
+
+        <span class="s1">sportimg.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">opennext(</span><span class="s3">&quot;sport&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">});</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">opennext(String type){</span>
+        <span class="s1">Intent intent=</span><span class="s0">new </span><span class="s1">Intent(</span><span class="s0">this</span><span class="s1">, InfoActivity.</span><span class="s0">class</span><span class="s1">);</span>
+        <span class="s1">intent.putExtra(</span><span class="s3">&quot;categorie&quot;</span><span class="s1">,type);</span>
+        <span class="s1">startActivity(intent);</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span></pre>
+</body>
+</html>
